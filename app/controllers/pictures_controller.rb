@@ -1,8 +1,12 @@
 class PicturesController < ApplicationController
 
-  def index
-    @pictures = Picture.all
-  end
+def index
+   @most_recent_pictures = Picture.most_recent_five
+   @older_than_month = Picture.created_before(Time.utc(2017, "jun", 07, 20, 01, 01))
+   @calendar_year_2017 = Picture.pictures_created_in_year(2017)
+   @calendar_year_2016 = Picture.pictures_created_in_year(2016)
+
+   end
 
   def show
     @picture = Picture.find(params[:id])
@@ -47,8 +51,5 @@ class PicturesController < ApplicationController
    @picture.destroy
    redirect_to "/pictures"
  end
-
-
-
 
 end

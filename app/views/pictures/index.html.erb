@@ -1,7 +1,31 @@
-<h1>Pictures (<%= @pictures.length %>)</h1>
-<%= link_to("New Picture", "/pictures/new") %>
+<h1>Most recent pictures</h1>
+<ul>
+  <% @most_recent_pictures.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
 
-<% @pictures.each do |picture| %>
-  <p><%= picture.title %>, <%= picture.artist %></p>
-  <%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %>
-<% end %>
+<h1>Monthly Pictures:</h1>
+<ul>
+  <% @older_than_month.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<h1>Calendar Year Pictures in 2016: </h1>
+<ul>
+  <% @calendar_year_2016.each do |picture| %>
+  <li><%= picture.title %></li>
+  <li><%= picture.artist %></li>
+  <li><%= image_tag(picture.url) %></li>
+  <% end %>
+</ul>
+
+<h1> Calendar Year Pictures in 2017: </h1>
+  <ul>
+    <% @calendar_year_2017.each do |picture| %>
+    <li><%= picture.title %></li>
+    <li><%= picture.artist %></li>
+    <li><%= image_tag(picture.url) %></li>
+    <% end %>
+  </ul>
